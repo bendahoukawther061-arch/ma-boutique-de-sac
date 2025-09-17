@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: ma-boutique-de-sac
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn ma_boutique_sacs.wsgi"
+    postBuildCommand: "python manage.py collectstatic --noinput"
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: ma_boutique_sacs.settings
+      - key: SECRET_KEY
+        value: "ton_secret_key_ici"
+      - key: DEBUG
+        value: "False"
+    autoDeploy: true
+    plan: free

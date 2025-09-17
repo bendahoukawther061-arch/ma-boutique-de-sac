@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Ma Boutique de Sacs</title>
+</head>
+<body>
+    <h1>Bienvenue dans ma boutique de sacs</h1>
+    <ul>
+        {% for sac in sacs %}
+            <li>
+                <h2>{{ sac.nom }}</h2>
+                <p>{{ sac.description }}</p>
+                <p><strong>{{ sac.prix }} DA</strong></p>
+                <img src="{{ sac.image.url }}" alt="{{ sac.nom }}" width="200">
+            </li>
+        {% empty %}
+            <li>Aucun sac disponible pour le moment.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

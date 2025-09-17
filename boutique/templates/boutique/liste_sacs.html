@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Boutique de sacs à main</title>
+</head>
+<body>
+    <h1>Découvrez notre collection de sacs à main !</h1>
+    
+    {% for sac in sacs %}
+        <div>
+            <a href="{% url 'detail_sac' sac.id %}"><h2>{{ sac.nom }}</h2></a>
+            {% if sac.image %}
+                <img src="{{ sac.image.url }}" alt="{{ sac.nom }}" width="200">
+            {% endif %}
+            <p>{{ sac.description }}</p>
+            <p><strong>Prix :</strong> {% if sac.prix %}{{ sac.prix }}{% else %}Non renseigné{% endif %} €</p>
+        </div>
+        <hr>
+    {% endfor %}
+
+    <div class="contact-info">
+        <h2>Contactez-nous</h2>
+        <p><strong>Numéro de téléphone :</strong> +213 555 123 456</p>
+        <p><strong>Adresse :</strong> 123 Rue de la Boutique, Tlemcen, Algérie</p>
+        <p><strong>Email :</strong> contact@maboutiquedesacs.com</p>
+    </div>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Ma Boutique de Sacs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f9f9f9;
+            padding: 20px;
+        }
+        h1 { text-align: center; }
+        .sac {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px auto;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        img { max-width: 100%; border-radius: 6px; }
+        .btn {
+            display: inline-block;
+            margin: 5px;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .acheter { background: #28a745; color: white; }
+        .payer { background: #007bff; color: white; }
+        .livraison { background: #ff9800; color: white; }
+    </style>
+</head>
+<body>
+    <h1>Bienvenue dans ma boutique de sacs</h1>
+    <div class="sacs">
+        {% for sac in sacs %}
+            <div class="sac">
+                <h2>{{ sac.nom }}</h2>
+                <p>{{ sac.description }}</p>
+                <p><strong>{{ sac.prix }} DA</strong></p>
+                <img src="{{ sac.image.url }}" alt="{{ sac.nom }}">
+                
+                <!-- Boutons -->
+                <div>
+                    <a href="#" class="btn acheter">Acheter</a>
+                    <a href="#" class="btn payer">Payer</a>
+                    <a href="#" class="btn livraison">Livraison</a>
+                </div>
+            </div>
+        {% empty %}
+            <p>Aucun sac disponible pour le moment.</p>
+        {% endfor %}
+    </div>
+</body>
+</html>

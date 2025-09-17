@@ -14,7 +14,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-2cpc80kav%v$3+#yis2n##24)g9#dn#z^8-22*tfbz0l(ie5x)')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True # Parfait, laissez-le sur False
+DEBUG = False
+ALLOWED_HOSTS = ["*"]
+# Parfait, laissez-le sur False
 
 # Ajout du nom de domaine de votre future application Heroku
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '192.168.1.37', 'votre-app-heroku.herokuapp.com']

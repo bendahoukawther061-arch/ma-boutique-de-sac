@@ -15,13 +15,11 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-2cpc80kav%v$3+#yis2n#
 # Mode debug désactivé pour production (True si DEBUG=1 sur Render)
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
-# Domaines autorisés
+# ✅ Domaines autorisés (corrigé pour Render)
 ALLOWED_HOSTS = [
     "127.0.0.1",
     "localhost",
-    "192.168.1.37",
-    "ma-boutique-de-sac.onrender.com",
-    "ma-boutique-de-sac-2.onrender.com",
+    "ma-boutique-de-sac-1.onrender.com",
 ]
 
 # Applications installées

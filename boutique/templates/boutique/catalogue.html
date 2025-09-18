@@ -1,0 +1,24 @@
+{% extends 'boutique/base.html' %}
+
+{% block title %}Catalogue - Ma Boutique{% endblock %}
+
+{% block content %}
+<h2 class="text-center mb-4">Nos Sacs</h2>
+
+<div class="row">
+    {% for sac in sacs %}
+    <div class="col-md-3 mb-4">
+        <div class="card shadow-sm">
+            <img src="{{ sac.image.url }}" class="card-img-top" alt="{{ sac.nom }}">
+            <div class="card-body text-center">
+                <h5 class="card-title">{{ sac.nom }}</h5>
+                <p class="card-text">Couleur : {{ sac.couleur }}</p>
+                <a href="{% url 'detail_sac' sac.id %}" class="btn btn-outline-primary btn-sm">Voir détails</a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <p class="text-center">Aucun sac trouvé.</p>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ma Boutique de Sacs</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .search-bar { margin: 20px; text-align: center; }
+        .grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+        .card { border: 1px solid #ddd; padding: 10px; text-align: center; width: 200px; }
+        img { width: 100%; height: auto; }
+    </style>
+</head>
+<body>
+    <h1 style="text-align:center;">Bienvenue dans Ma Boutique de Sacs</h1>
+    <p style="text-align:center;">Découvrez nos sacs de toutes couleurs et styles</p>
+
+    <div class="search-bar">
+        <form method="get">
+            <input type="text" name="q" placeholder="Rechercher par nom ou couleur...">
+            <button type="submit">Rechercher</button>
+        </form>
+    </div>
+
+    <div class="grid">
+        {% for sac in sacs %}
+        <div class="card">
+            <a href="{% url 'detail_sac' sac.id %}">
+                <img src="{{ sac.image.url }}" alt="{{ sac.nom }}">
+                <h3>{{ sac.nom }}</h3>
+                <p>Couleur : {{ sac.couleur }}</p>
+                <p>{{ sac.prix }} DA</p>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
